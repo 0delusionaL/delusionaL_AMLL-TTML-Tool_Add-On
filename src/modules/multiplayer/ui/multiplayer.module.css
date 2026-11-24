@@ -1,0 +1,40 @@
+/* Chat tab label and its unread count. */
+.chatTab {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.unread {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 18px;
+	height: 18px;
+	padding: 0 5px;
+	border-radius: var(--sl-radius-pill, 9999px);
+	background: var(--accent-9);
+	color: var(--accent-contrast);
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+/* Takes the editor's place in the window's column layout. */
+.slot {
+	flex-grow: 1;
+	min-height: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Used only when the editor offers no slot for the chat. */
+.overlay {
+	position: fixed;
+	inset: 48px 0 0 0;
+	z-index: 50;
+	display: flex;
+	flex-direction: column;
+	background: var(--color-background);
+}

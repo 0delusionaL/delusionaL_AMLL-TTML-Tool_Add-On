@@ -1,0 +1,17 @@
+.field {
+	flex: 1;
+	min-width: 0;
+}
+
+.address {
+	min-width: 0;
+}
+
+.addressLabel {
+	min-width: 104px;
+}
+
+.ok {
+	color: var(--green-11);
+	flex-shrink: 0;
+}

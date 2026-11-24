@@ -1,0 +1,310 @@
+/* Party chat. Built from Radix tokens so both the classic and the Spicy
+   Lyrics look apply, and the user's colour overrides keep working. */
+.chat {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 240px;
+	gap: 8px;
+	height: 100%;
+	min-height: 0;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+.main,
+.side {
+	min-height: 0;
+	background: var(--color-panel-solid);
+	border: 1px solid var(--gray-a5);
+	border-radius: var(--radius-4);
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.side {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+.sideTitle {
+	padding: 0 8px;
+}
+
+.list {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 12px 14px;
+}
+
+.empty {
+	margin: auto;
+	text-align: center;
+}
+
+.message {
+	position: relative;
+	padding: 4px 72px 4px 8px;
+	border-radius: var(--radius-3);
+}
+
+.message:hover,
+.message:focus-within {
+	background: var(--gray-a2);
+}
+
+.message[data-pinned] {
+	background: var(--accent-a2);
+}
+
+.message[data-flash] {
+	outline: 2px solid var(--accent-8);
+}
+
+.header {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.dot {
+	flex-shrink: 0;
+	align-self: center;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
+
+.author {
+	font-size: var(--font-size-2);
+	font-weight: 600;
+}
+
+.time {
+	color: var(--gray-11);
+	font-size: var(--font-size-1);
+}
+
+.text {
+	font-size: var(--font-size-2);
+	line-height: 1.5;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.text a {
+	color: var(--accent-11);
+}
+
+.pinMark {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	color: var(--accent-11);
+	font-size: var(--font-size-1);
+}
+
+.actions {
+	position: absolute;
+	top: 4px;
+	right: 6px;
+	display: flex;
+	gap: 4px;
+	opacity: 0;
+}
+
+.message:hover .actions,
+.message:focus-within .actions {
+	opacity: 1;
+}
+
+.preview,
+.image {
+	display: block;
+	max-width: min(320px, 100%);
+	max-height: 280px;
+	margin-top: 6px;
+	border-radius: var(--radius-3);
+}
+
+.fileBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-top: 6px;
+}
+
+.media {
+	max-width: min(360px, 100%);
+}
+
+.fileCard {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	max-width: 100%;
+	width: fit-content;
+	padding: 8px 10px;
+	border: 1px solid var(--gray-a5);
+	border-radius: var(--radius-3);
+	background: var(--gray-a2);
+	color: inherit;
+	text-decoration: none;
+}
+
+.fileCard:hover {
+	background: var(--gray-a3);
+}
+
+.fileCard:focus-visible {
+	outline: 2px solid var(--focus-8);
+}
+
+.fileName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fileSize {
+	color: var(--gray-11);
+	font-size: var(--font-size-1);
+	white-space: nowrap;
+}
+
+.uploads {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 4px 14px;
+}
+
+.composer {
+	display: flex;
+	align-items: flex-end;
+	gap: 8px;
+	padding: 10px;
+	border-top: 1px solid var(--gray-a5);
+}
+
+.input {
+	flex: 1;
+	min-width: 0;
+}
+
+.input :global(textarea) {
+	field-sizing: content;
+	min-height: 36px;
+	max-height: 160px;
+}
+
+.pinned {
+	border-bottom: 1px solid var(--gray-a5);
+}
+
+.pinnedToggle {
+	all: unset;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	padding: 8px 14px;
+	color: var(--accent-11);
+	font-size: var(--font-size-2);
+	cursor: pointer;
+}
+
+.pinnedToggle:focus-visible,
+.pinnedJump:focus-visible {
+	outline: 2px solid var(--focus-8);
+	outline-offset: -2px;
+}
+
+.pinnedHint {
+	margin-left: auto;
+	color: var(--gray-11);
+	font-size: var(--font-size-1);
+}
+
+.pinnedList {
+	max-height: 180px;
+	margin: 0;
+	padding: 0 8px 8px;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.pinnedItem {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.pinnedJump {
+	all: unset;
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	gap: 6px;
+	padding: 4px 6px;
+	overflow: hidden;
+	border-radius: var(--radius-2);
+	font-size: var(--font-size-1);
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.pinnedJump:hover {
+	background: var(--gray-a3);
+}
+
+.pinnedJump span {
+	overflow: hidden;
+	color: var(--gray-11);
+	text-overflow: ellipsis;
+}
+
+.drop {
+	position: absolute;
+	inset: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px dashed var(--accent-8);
+	border-radius: var(--radius-4);
+	background: var(--accent-a3);
+	color: var(--accent-11);
+	font-size: var(--font-size-4);
+	pointer-events: none;
+}
+
+@media (max-width: 900px) {
+	.chat {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.side {
+		display: none;
+	}
+}
+
+@media (prefers-contrast: more) {
+	.main,
+	.side,
+	.fileCard,
+	.composer {
+		border-color: var(--gray-a8);
+	}
+}

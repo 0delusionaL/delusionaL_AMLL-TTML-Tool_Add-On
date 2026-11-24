@@ -1,0 +1,12 @@
+{
+	"name": "ttml-tool-multiplayer",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Multiplayer add-on for the Spicy Lyrics TTML Tool: edit one TTML together over Radmin VPN",
+	"type": "module",
+	"license": "AGPL-3.0-or-later",
+	"engines": { "node": "^20.19.0 || >=22.12.0" },
+	"scripts": {
+		"test": "node --test \"multiplayer/test/*.mjs\""
+	}
+}
